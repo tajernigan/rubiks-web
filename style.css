@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#middle-cube {
+    width: 600px;
+    height: 600px
+}
