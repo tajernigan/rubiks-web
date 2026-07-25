@@ -5,12 +5,19 @@ let scrambled = false;
 const moves = ["R", "U", "F", "L", "D", "B"];
 const directions = ["'", "", "2"];
 const cube = document.getElementById("middle-cube");
+let last_move = "";
 
 const sleep = milliseconds =>
     new Promise(resolve => setTimeout(resolve, milliseconds));
 
+// gets a random move without same prefix as last move, ie scramble wont contain R then R2
 const random_move = () => {
-    return moves[Math.floor(Math.random() * moves.length)] + directions[Math.floor(Math.random() * directions.length)]; // get random move type and direction
+    let move = moves[Math.floor(Math.random() * moves.length)];
+    while (move == last_move){
+        move = moves[Math.floor(Math.random() * moves.length)];
+    }
+    last_move = move;
+    return move + directions[Math.floor(Math.random() * directions.length)]; // get random move type and direction
 }
 
 const scramble_button = document.getElementById("scramble")
